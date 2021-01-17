@@ -1,0 +1,4 @@
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb://cmdb:cmdb@192.168.2.144:27017,192.168.2.145:27017,192.168.2.146:27017/cmdb
