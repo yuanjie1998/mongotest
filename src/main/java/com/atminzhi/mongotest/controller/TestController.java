@@ -14,7 +14,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/*
+只在controller操作了数据库
+ */
 @RestController
 @RequestMapping("/test01")
 public class TestController {
@@ -61,6 +63,7 @@ public class TestController {
         Test result = mongoTemplate.save(test, "commodity ");
         if (!StringUtils.isEmpty(result)){
             System.out.println("数据新增成功！");
+            logger.info("数据新增成功！");
         }
        
 //        testService.saveUser(test);
