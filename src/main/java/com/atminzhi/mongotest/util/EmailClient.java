@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import javax.validation.constraints.Email;
+
 /*
 发送邮件接口
  */
 @Component //将EmailClient组件注入bean实例 ,都可以用
 public class EmailClient {
     //获取本类的日志
-    private static final Logger logger = LoggerFactory.getLogger(Email.class);
+    private static final Logger logger = LoggerFactory.getLogger(EmailClient.class);
     //注入发送邮件接口
     @Autowired
     JavaMailSender mailSender;
@@ -36,7 +36,9 @@ public class EmailClient {
             helper.setTo(to);
             helper.setSubject(subject);
 //            true支持发送html文件
-            helper.setText(content,true);
+//            helper.setText(content,true);
+            //发送文本
+            helper.setText(content);
             //发送邮件
             mailSender.send(helper.getMimeMessage());
             logger.info("邮件发送成功");
