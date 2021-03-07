@@ -39,7 +39,7 @@ public class PageTest {
         page.setCurrent(current);
         page.setLimit(limit);
         int offset = page.getOffset();
-
+        //把分页查询limit、skip
         Query query = new Query().limit(limit).skip(offset);
         List<TestPlus> autoinser_tList = template.find(query, TestPlus.class, "autoinsert ");
         //查询数据库数据总条数

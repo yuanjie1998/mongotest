@@ -164,7 +164,7 @@ public class newMogoTest {
         return "user"+username;
     }
 
-    @ApiOperation("查询所有数据，并根据age进行倒序输出数据")
+    @ApiOperation("(排序)查询所有数据，并根据age进行倒序输出数据")
     @GetMapping("/delectSort")
     public Map<String,Object> delectSort(){
         Map<String,Object> map = new HashMap<>();
@@ -189,6 +189,62 @@ public class newMogoTest {
         }
 
     }
+    /**
+     * 排序
+     */
+//    public Query dealCondition(String taskType, String search, Integer page, Integer size, String projectId) {
+//        Query query = new Query();
+//        query.addCriteria(Criteria.where("partUsers").is(UserUtil.getCurrentUserName()));
+//        if (TaskType.today.value.equals(taskType)) {
+//            //根据截止日期排序
+//            DateTime begin = DateUtil.beginOfDay(DateUtil.date());
+//            DateTime end = DateUtil.endOfDay(DateUtil.date());
+////            String begin = DateUtil.format(DateUtil.beginOfDay(DateUtil.date()), DatePattern.NORM_DATETIME_PATTERN);
+////            String end = DateUtil.format(DateUtil.endOfDay(DateUtil.date()), DatePattern.NORM_DATETIME_PATTERN);
+//            Criteria criteria = Criteria.where("endTime").gte(begin).lte(end);
+
+//            query.addCriteria(criteria).with(new Sort(Sort.Direction.DESC, "endTime").and(new Sort(Sort.Direction.ASC,"taskStatus")));
+//            System.out.println(query.toString());
+//        }
+//        if (TaskType.undone.value.equals(taskType)) {
+//            //根据创建日期排序
+//            List<Integer> integerList = Arrays.asList(TaskStatusEnum.UNRECIEVED.getCode(),
+//                    TaskStatusEnum.ACCEPTED.getCode(), TaskStatusEnum.EXECUTING.getCode());
+//            Criteria in = Criteria.where("taskStatus").in(integerList);
+//            query.addCriteria(in);
+//            query.with(new Sort(Sort.Direction.ASC,"taskStatus").and(new Sort(Sort.Direction.DESC,"createTime")));
+//        }
+//        if (TaskType.week.value.equals(taskType)) {
+//            //截止日期在本周  日期正序从小到大
+//            DateTime end = DateUtil.endOfWeek(DateUtil.date());
+//            DateTime begin = DateUtil.beginOfWeek(DateUtil.date());
+//            //String end = DateUtil.format(DateUtil.endOfWeek(DateUtil.date()), DatePattern.NORM_DATETIME_PATTERN);
+//            Criteria criteria = Criteria.where("endTime").lte(end).gte(begin);
+//            query.addCriteria(criteria);
+//            query.with(new Sort(Sort.Direction.ASC,"taskStatus").and(new Sort(Sort.Direction.DESC,"endTime")));
+//        }
+//        if (TaskType.overdue.value.equals(taskType)) {
+//            query.addCriteria(Criteria.where("outTimeStatus").is(1).and("taskStatus").ne(TaskStatusEnum.COMPLETE.getCode()));
+//            query.with(new Sort(Sort.Direction.ASC,"taskStatus").and(new Sort(Sort.Direction.DESC,"taskPriority","endTime")));
+//        }
+//        if (TaskType.all.value.equals(taskType)) {
+//            query.with(new Sort(Sort.Direction.ASC,"taskStatus").and(new Sort(Sort.Direction.DESC,"endTime","taskPriority")));
+//        }
+//
+//
+//        if (TaskType.least.value.equals(taskType)) {
+//            query.with(new Sort(Sort.Direction.ASC,"taskStatus").and(new Sort(Sort.Direction.DESC,"createTime")));
+//        }
+//        if (StrUtil.isNotEmpty(search)) {
+//            query.addCriteria(Criteria.where("title").regex(search));
+//        }
+//        if (StrUtil.isNotEmpty(projectId)) {
+//            query.addCriteria(Criteria.where("relatedProject").is(projectId));
+//        }
+//        query.addCriteria(Criteria.where("isHasSubtask").is(0));
+//        query.skip((page - 1) * size).limit(size);
+//        return query;
+//    }
 
     /**查询数据库的所有数据(模糊查询)
      * 这里使用的正则表达式的方式
